@@ -1,0 +1,52 @@
+.poke-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.poke-card {
+    position: relative;
+   width: 25%;
+   margin: 20px;
+   border: 1px solid rgb(107, 107, 107);
+   border-radius: 15px;
+   padding: 10px;
+}
+.header-poke {
+    text-align: center;
+}
+.header-poke h2 {
+    font-size: 2rem;
+    text-transform: capitalize;
+}
+.header-poke h2 span {
+    position: absolute;
+    top: 0;
+    right: 3px;
+    font-size: 1.3rem;
+}   
+.header-poke img {
+    width: 300px;
+}
+.stats-poke {
+
+}
+.stats-poke p span {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 2px;
+}
+.stats-poke div { 
+    text-align: center;
+    text-transform: capitalize;
+}
+.stats-poke div span{
+    margin: 0 10px;
+}
+.stats-poke a {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}

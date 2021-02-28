@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Pokecard from './Pokecard'
+import './PokeList.css'
 
 function Pokelist() {
     const [pokelist, setpokelist] = useState([])
@@ -17,7 +18,7 @@ function Pokelist() {
     })
 
     return (
-        <div>
+        <div className="poke-list">
             {pokelist && pokeMap}
         </div>
     )
