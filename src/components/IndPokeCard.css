@@ -1,0 +1,143 @@
+li {
+    list-style: none;
+}
+img{
+    width: 120px;
+}
+/*═══════════════════════════════════════════════════════
+                   Provisional Grid
+═══════════════════════════════════════════════════════*/
+@media (min-width:992px) {
+    .row{
+        display:flex;
+    }
+    .col-lg-8{
+        width: 66.66%;
+    }
+    .col-lg-4{
+        width: 33.34%;
+    }
+    .col-lg-6{
+        width: 50%;
+    }
+}
+@media (min-width:1200px) {
+    .row{
+        display:flex;
+    }
+    .col-xl-8{
+        width: 66.66%;
+    }
+    .col-xl-4{
+        width: 33.34%;
+    }
+    .col-xl-6{
+        width: 50%;
+    }
+}
+
+/*═══════════════════════════════════════════════════════
+                      Containers
+═══════════════════════════════════════════════════════*/
+.general-container {
+    /*background:red;*/
+    height:100%; 
+    overflow: hidden;
+}
+.block-container {
+   /* background:blue;*/
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+.container-image{
+   padding-top: 18px;
+}
+.container-list{
+    overflow-y:scroll;
+    width: 240px;
+    height:40px;
+}
+/*═══════════════════════════════════════════════════════
+                      Cards-style
+═══════════════════════════════════════════════════════*/
+.card-info {
+    background:#FFF5D9;
+    border-radius: 10px;
+    height: 100px;
+    display:inline-block;
+    width: 230px;
+    margin-right: 160px;
+    margin-left: 5px;
+    margin-bottom: 100px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    padding-bottom: 10px;
+    padding-left: 3%;
+}
+
+/*═══════════════════════════════════════════════════════
+                  Center-Card styles
+═══════════════════════════════════════════════════════*/
+.circle-base{
+    background:#D22121 ;
+    height: 250px;
+    width: 250px;
+    border-radius:50%;
+    position:absolute;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    margin-left: 190px;
+    margin-top: -175px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.8);
+}
+.circle-contrast{
+    background:white;
+    height: 200px;
+    width: 200px;
+    border-radius:50%;
+    position:absolute;
+    margin-top: 24px;
+}
+.circle-center{
+    background: #D22121;
+    height: 150px;
+    width: 150px;
+    border-radius:50%;
+    position:absolute;
+    margin-top: 24px;
+    margin-left: 24px;   
+}
+.bar{
+    background:white;
+    height: 26px;
+    width: 250px;
+    border-radius: 8px;
+    margin-top:110px;
+}
+/*═══════════════════════════════════════════════════════
+                   Typhography-style
+═══════════════════════════════════════════════════════*/
+.rigth-text{
+    text-align: right;
+    padding-right:4%;
+}
+/*═══════════════════════════════════════════════════════
+                      Button-style
+═══════════════════════════════════════════════════════*/
+.button-location{
+    background:#D22121;
+    border-radius:8px;
+    height: 25px;
+    border: none;
+    color: ivory;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.button-location:focus{
+    outline:none;
+}
+.button-location:hover{
+    background:#CC1313;
+}
