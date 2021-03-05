@@ -36,44 +36,6 @@ img{
     }
 }
 
-/*═══════════════════════════════════════════════════════
-                      Containers
-═══════════════════════════════════════════════════════*/
-.general-container {
-    /*background:red;*/
-    height:100%; 
-    overflow: hidden;
-}
-.block-container {
-   /* background:blue;*/
-    height: 100%;
-    display: flex;
-    overflow: hidden;
-}
-.container-image{
-   padding-top: 18px;
-}
-.container-list{
-    overflow-y:scroll;
-    width: 240px;
-    height:40px;
-}
-/*═══════════════════════════════════════════════════════
-                      Cards-style
-═══════════════════════════════════════════════════════*/
-.card-info {
-    background:#FFF5D9;
-    border-radius: 10px;
-    height: 100px;
-    display:inline-block;
-    width: 230px;
-    margin-right: 160px;
-    margin-left: 5px;
-    margin-bottom: 100px;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    padding-bottom: 10px;
-    padding-left: 3%;
-}
 
 /*═══════════════════════════════════════════════════════
                   Center-Card styles
@@ -83,13 +45,13 @@ img{
     height: 250px;
     width: 250px;
     border-radius:50%;
-    position:absolute;
     z-index: 1;
     text-align: center;
-    justify-content: center;
     display: flex;
-    margin-left: 190px;
-    margin-top: -175px;
+    justify-content: center;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 20px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.8);
 }
 .circle-contrast{
@@ -116,28 +78,101 @@ img{
     border-radius: 8px;
     margin-top:110px;
 }
-/*═══════════════════════════════════════════════════════
-                   Typhography-style
-═══════════════════════════════════════════════════════*/
-.rigth-text{
-    text-align: right;
-    padding-right:4%;
+.dats-poke {
+    position: relative;
 }
-/*═══════════════════════════════════════════════════════
-                      Button-style
-═══════════════════════════════════════════════════════*/
-.button-location{
-    background:#D22121;
-    border-radius:8px;
-    height: 25px;
-    border: none;
-    color: ivory;
-    margin-left: 10%;
-    margin-right: 10%;
+.dats-poke h2 {
+    text-align: center;
+    margin-top: 2rem;
+    text-transform: capitalize;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.164)!important;
+    padding-top: 1rem;
+    padding: 10px;
+    color: rgb(0, 0, 92);
 }
-.button-location:focus{
-    outline:none;
+.dats-poke a {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: rgb(180, 180, 180);
 }
-.button-location:hover{
-    background:#CC1313;
+.dats-poke .encounters {
+    position: absolute;
+    top: 7px;
+    right: 7rem;
+    color: rgb(180, 180, 180);
+}
+.dats-poke .encounters a{
+    text-decoration: none;
+}
+.dats-poke .general-poke {
+    padding: 2px 20px;
+    display: flex;
+    justify-content: space-around;
+}
+.dats-poke .general-poke p {
+    color: rgb(4, 4, 90);
+    font-weight: bold;
+}
+.dats-poke .general-poke p span {
+    font-weight: 500;
+    color: rgb(88, 88, 88);
+}   
+.general-poke .habilities {
+    text-align: center;
+}
+
+.general-poke .habilities h4 {
+    border-bottom: 1px solid rgb(223, 223, 223);
+}
+.general-poke .habilities div {
+    display: flex;
+}
+.general-poke .habilities div li{
+    text-align: left;
+    text-transform: capitalize;
+    color: rgb(0, 0, 92);
+    border: 1px solid rgb(180, 180, 180);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 1rem;
+}
+
+
+
+
+
+
+.moves-side {
+    background-color: rgb(243, 243, 243);
+    border-left: 2px solid rgb(223, 223, 223);
+    height: 100vh;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.moves-body {
+    width: 500px;
+}
+.moves-body h3 {
+    text-align: center;
+    margin-top: -6px;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.164)!important;
+    padding: 10px;
+    color: rgb(0, 0, 92);
+}
+.moves-body .list-moves ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+.moves-body .list-moves ul li {
+    border: 1px solid rgb(223, 223, 223);
+    width: 35%;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    text-transform: capitalize;
+    color: rgb(0, 0, 92);
+
 }

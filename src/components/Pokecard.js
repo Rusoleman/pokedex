@@ -3,11 +3,11 @@ import './PokeList.css';
 
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 
-function Pokecard({name,url}) {
+function Pokecard({url}) {
     const [isData, setIsData] = useState([]);
-    //const [ability,setAbility]= useState([]);
     const [isType,setType]= useState([]);
     const [hp, setHp] = useState({})
     const [speed, setSpeed] = useState({})
@@ -18,7 +18,6 @@ function Pokecard({name,url}) {
         const getData = async () => {
             const res = await axios.get(url)
                 setIsData(res.data)
-                //setAbility(res.data.abilities)
                 setType(res.data.types)
                 setHp({
                     name: res.data.stats[0].stat.name,
@@ -40,36 +39,29 @@ function Pokecard({name,url}) {
         getData()
     }, [url])
 
-    
-    /*const mapAbility=ability.map((value) =>{
-        return <li key={value.ability.name}>{value.ability.name}</li>
-    })*/
 
-    const mapType=isType.map((value) =>{
+    const mapType = isType.map((value) =>{
         return <span key={value.type.name}>{value.type.name}</span>
     })
     
-    
-
     return (
         <>
-            <div className="poke-card">
+         <div className="poke-card">
             <div className="header-poke">
-                <img style={{width: "150px"}} src={`https://pokeres.bastionbot.org/images/pokemon/${isData.id}.png`} alt="pokemon"/>
-                <h2>{isData.name} <span># {isData.id}</span></h2>
+                <div className="header-img">
+                    <div>{mapType}</div>
+                    <img style={{width: "150px"}} src={`https://pokeres.bastionbot.org/images/pokemon/${isData.id}.png`} alt="pokemon"/>
+                </div>
+                <h2>{isData.name}</h2>
+                <span className="poke-id"># {isData.id}</span>
             </div>
             <div className="stats-poke">
-                <div>{mapType}</div>
                 <p><span>{hp.name}:</span>  {hp.base}</p>
                 <p><span>{speed.name}:</span>  {speed.base}</p>
                 <p><span>{defense.name}:</span>  {defense.base}</p>
                 <p><span>{attack.name}:</span>  {attack.base}</p>
-                {/*<a href="!#">View</a> {/* esto debe de ser un Link de react router dom */}
-                <Link to={`/thisPokemon/${isData.id}`}>VIEW</Link>
-
             </div>
-
-            
+            <Link to={`/pokedex/pokemon/${isData.id}`}><ArrowRightAltIcon fontSize="large"/></Link>
          </div>
         </>
     )
