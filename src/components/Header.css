@@ -1,7 +1,7 @@
 .header__site {
     display: flex;
     justify-content: space-between;
-    padding: 20px 60px;
+    padding: 10px 60px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
 }
@@ -13,7 +13,7 @@
 .header__site .searchs input {
     margin-right: 20px;
     width: 200px;
-    padding: 10px;
+    padding: 20px;
     border-radius: 10px;
     border: 1px solid rgb(223, 223, 223);
     color: rgb(24, 24, 173)
@@ -25,7 +25,7 @@
     position: absolute;
     right: 0;
     border-radius: 0px 10px 10px 0px;
-    height: 39px;
+    height: 57px;
     padding: 10px;
     background-color: rgb(245, 245, 245);
     border: 1px solid rgb(223, 223, 223);
@@ -45,7 +45,7 @@
     border: 1px solid rgb(24, 24, 173);
 }
 .header__site button {
-    padding: 10px 35px;
+    padding: 8px 35px;
     cursor: pointer;
     color: rgb(24, 24, 173);
     border: 1px solid rgb(223, 223, 223);
@@ -57,4 +57,13 @@
 }
 .header__site button:focus {
     outline: none;
+}
+.header__button {
+    display: flex;
+}
+.header__button p {
+    margin-right: 1rem;
+    color: rgb(24, 24, 173);
+    text-transform: capitalize;
+    font-weight: bold;
 }

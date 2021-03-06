@@ -1,21 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './Pagination.css'
-const Pagination = ({pokePerPage, paginate, totalPost, currentType, currenPage}) => {
+const Pagination = ({pokePerPage, paginate, totalPost, currenPage}) => {
     const pageNumbers = [];
-    const [isPage, setIsPage] = useState(currenPage - 1)
 
-    for(let i = 1; i <= Math.ceil(totalPost / pokePerPage); i++) {
+    currenPage = currenPage || 1;
+    pokePerPage = pokePerPage || 10;
+
+    for(let i = 0; i <= Math.ceil(totalPost / pokePerPage); i++) {
         pageNumbers.push(i)
     }
 
-    useEffect(() => {
-        if(currenPage >= 4) {
-            setIsPage(currenPage - 4)
-        }            
-    }, [currenPage])
+    let startpage; 
+    let endpage;
+    if(pageNumbers <= 10) {
+        startpage = 1;
+        endpage = pageNumbers;
+    } else {
+        if(currenPage <= 6) {
+            startpage = 1;
+            endpage = 10;
+        } else if (currenPage +4 >= pageNumbers) {
+            startpage = pageNumbers - 9;
+            endpage = pageNumbers;
+        } else {
+            startpage = currenPage - 5
+            endpage = currenPage + 4
+        }
+    }
 
 
-    const page = pageNumbers.slice(isPage, currenPage+6)
+
+    const page = pageNumbers.slice(startpage, endpage+1)
 
 
     const arr = page.map(number => {

@@ -13,12 +13,10 @@ const authenticate = {
 
 const useAuthenticate = () => {
     const[user, setUser] = useState(null);
-    const [trainner, setTrainner] = useState(null)
     const [baseUrl, setBaseUrl] = useState(null)
     
     const signIn = (callback) => {
         authenticate.signIn(() => {
-            setUser(trainner)
             callback();
         })
     }
@@ -34,7 +32,7 @@ const useAuthenticate = () => {
         user,
         setBaseUrl,
         baseUrl,
-        setTrainner,
+        setUser,
         signIn,
         signOut
     }

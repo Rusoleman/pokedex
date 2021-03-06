@@ -15,6 +15,8 @@ function Pokelist() {
     const [pokeType, setPokeType] = useState([])
     const {user, baseUrl} = useAuth()
 
+    const [error, setError] = useState("")
+
     const [currenPage, setCurrentPage] = useState(1)
     const [pokePerPage] = useState(4)
     
@@ -37,8 +39,10 @@ function Pokelist() {
                 const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
                 setPokeNameData(res.data) 
             }
-            catch (e) {
-                console.error(e)
+            catch (error) {
+                if(error.response.status === 404) {
+                    setError("No se encontro el pokemon")
+                }
             }
           }        
           getData()
@@ -48,7 +52,7 @@ function Pokelist() {
         if(baseUrl) {
                 const getFilter = async () => {
                     const res = await axios.get(`https://pokeapi.co/api/v2/type/${baseUrl}`)
-                        setPokeType(res.data.pokemon)
+                    setPokeType(res.data.pokemon)
                 }
                 getFilter()
             }
@@ -61,15 +65,12 @@ function Pokelist() {
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
-
     const pokeMap = currentPoke.map((value)=> {      
         return <Pokecard name={value.name} url={value.url} key={value.name}/>
-
     })
 
     const pokeTypes = currentType.map((value)=> {      
         return <Pokecard name={value.pokemon.name} url={value.pokemon.url} key={value.pokemon.name}/>
-
     })
 
     return (
@@ -81,7 +82,12 @@ function Pokelist() {
                  {
                     pokeName ?
                      <>
-                        <PokeCardName data={pokeNameData} />
+                        {
+                            error ?
+                             <span style={{textAlign: 'center'}}>{error}</span>
+                            :
+                            <PokeCardName data={pokeNameData} />
+                        }
                      </> 
                      :
                      <>
@@ -91,7 +97,9 @@ function Pokelist() {
                                 :
                                 pokeMap
                             }
+                            
                         </div>
+                        <Pagination pokePerPage={pokePerPage} currenPage={currenPage} totalPost={pokelist.length} paginate={paginate}/>
                      </>
                  }
                 </>
@@ -101,7 +109,7 @@ function Pokelist() {
                 </>
                 
             }
-            <Pagination pokePerPage={pokePerPage} currenPage={currenPage} totalPost={pokelist.length} paginate={paginate}/>
+            
         </>
     )
 
