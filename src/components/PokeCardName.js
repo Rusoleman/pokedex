@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 const PokeCardName = ({data}) => {
     const [isType,setType]= useState([]);
@@ -54,7 +55,7 @@ const PokeCardName = ({data}) => {
                 <p><span>{defense.name}:</span>  {defense.base}</p>
                 <p><span>{attack.name}:</span>  {attack.base}</p>
             </div>
-            <Link to={`/thisPokemon/${data.id}`}>Ecounters --</Link>
+            <Link to={`/pokedex/pokemon/${data.id}`}><ArrowRightAltIcon fontSize="large"/></Link>
          </div>
     )
 }
