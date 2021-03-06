@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../provider/AuthProvider';
 import './Login.css'
 
@@ -6,13 +6,22 @@ import './Login.css'
 import {useHistory} from 'react-router-dom';
 
 const Login = () => {
-    const {setTrainner, signIn} = useAuth()
+    const {setUser, signIn, user} = useAuth()
+    const [tainner, setTrainner] = useState('')
     const history = useHistory();
+
+    useEffect(() => {
+        if(user) {
+            history.push('/pokedex')
+        }
+    }, [user, history])
 
     const handleLogin = (e) => {
         e.preventDefault()
-        signIn(() => {})
-        history.push('/pokedex')
+        signIn(() => {
+            setUser(tainner)
+        })
+        
     }
 
     

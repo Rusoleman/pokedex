@@ -16,7 +16,8 @@ function Pokecard({url}) {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await axios.get(url)
+            try {
+                const res = await axios.get(url)
                 setIsData(res.data)
                 setType(res.data.types)
                 setHp({
@@ -35,6 +36,12 @@ function Pokecard({url}) {
                     name: res.data.stats[1].stat.name,
                     base: res.data.stats[1].base_stat
                 })
+            }
+            catch (error) {
+                if(error.response.status === 404) {
+                    alert("await")
+                }
+            }
         }
         getData()
     }, [url])
@@ -50,7 +57,9 @@ function Pokecard({url}) {
             <div className="header-poke">
                 <div className="header-img">
                     <div>{mapType}</div>
-                    <img style={{width: "150px"}} src={`https://pokeres.bastionbot.org/images/pokemon/${isData.id}.png`} alt="pokemon"/>
+                    {
+                        isData.id && <img style={{width: "150px"}} src={`https://pokeres.bastionbot.org/images/pokemon/${isData.id}.png`} alt="pokemon"/>
+                    }
                 </div>
                 <h2>{isData.name}</h2>
                 <span className="poke-id"># {isData.id}</span>

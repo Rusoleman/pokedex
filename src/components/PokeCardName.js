@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
+
 const PokeCardName = ({data}) => {
     const [isType,setType]= useState([]);
     const [hp, setHp] = useState({})
@@ -40,7 +41,9 @@ const PokeCardName = ({data}) => {
             <div className="header-poke">
                 <div className="header-img">
                     <div>{mapType}</div>
-                    <img style={{width: "150px"}} src={`https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`} alt="pokemon"/>
+                    {
+                        data.id && <img style={{width: "150px"}} src={`https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`} alt="pokemon"/>
+                    }
                 </div>
                 <h2>{data.name}</h2>
                 <span className="poke-id"># {data.id}</span>

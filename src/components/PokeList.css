@@ -6,7 +6,7 @@
 }
 .poke-card {
    position: relative;
-   width: 15%;
+   width: 200px;
    margin: 20px;
    border: 2px solid rgb(223, 223, 223);
    border-radius: 15px;
@@ -82,4 +82,9 @@
     cursor: pointer;
     color: rgb(145, 145, 145);
     font-size: .9rem;
+}
+.poke-card .back a {
+    position: fixed;
+    top: 1.3rem;
+    left: 1rem;
 }

@@ -8,7 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Types from '../archives/Types'
 
 const Header = ({setPokeName}) => {
-    const {signOut, setBaseUrl} =  useAuth();
+    const {signOut, setBaseUrl, user} =  useAuth();
     const [pokeNameInput, setPokeNameInput] = useState(null)
 
     const handleLogOut = () => {
@@ -42,7 +42,10 @@ const Header = ({setPokeName}) => {
                     <option key={type.name}>{type.name}</option>
                 ))}
             </select> 
-            <button onClick={() => handleLogOut()}>Log Out</button>
+            <div className="header__button">
+                <p>{`${user} Trainner!`}</p>
+                <button onClick={() => handleLogOut()}>Log Out</button>
+            </div>
         </div>
     )
 }
