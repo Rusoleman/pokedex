@@ -15,7 +15,7 @@ function Pokelist() {
     const [pokeType, setPokeType] = useState([])
     const {user, baseUrl} = useAuth()
 
-    const [error, setError] = useState("")
+    const [error, setError] = useState()
 
     const [currenPage, setCurrentPage] = useState(1)
     const [pokePerPage] = useState(4)
@@ -37,11 +37,12 @@ function Pokelist() {
         const getData = async () => {
             try {
                 const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
-                setPokeNameData(res.data) 
+                setPokeNameData(res.data)
+                setError('')
             }
             catch (error) {
                 if(error.response.status === 404) {
-                    setError("No se encontro el pokemon")
+                    return setError("No se encontro el pokemon")
                 }
             }
           }        
