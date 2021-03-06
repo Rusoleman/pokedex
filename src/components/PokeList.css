@@ -2,39 +2,70 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
+    margin-top: 2rem;
 }
 .poke-card {
-    position: relative;
-   width: 25%;
+   position: relative;
+   width: 15%;
    margin: 20px;
-   border: 1px solid rgb(107, 107, 107);
+   border: 2px solid rgb(223, 223, 223);
    border-radius: 15px;
-   padding: 10px;
+   padding: 20px;
+   box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
 }
 .header-poke {
     text-align: center;
 }
 .header-poke h2 {
+    margin-top: 4rem;
     font-size: 2rem;
     text-transform: capitalize;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.164)!important;
+    color: rgb(0, 0, 71);
 }
-.header-poke h2 span {
+.header-poke .poke-id {
     position: absolute;
-    top: 0;
-    right: 3px;
+    top: 5px;
+    right: 10px;
     font-size: 1.3rem;
+    color: rgb(24, 24, 173);
 }   
 .header-poke img {
-    width: 300px;
+    width: 100%;
 }
-.stats-poke {
 
+.header-img {
+    display: flex;
+    justify-content: space-between;
 }
+.header-img div {
+    margin-top: -1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.header-img div span {
+    border-bottom: 1px solid #d8d8d8;
+    padding-bottom: 5px;
+    margin-bottom: 6px;
+    text-transform: capitalize;
+    color: rgb(24, 24, 173);
+}
+
+.stats-poke {
+    position: absolute;
+    top: 4rem;
+}
+.stats-poke p {
+    color: rgb(76, 76, 112);
+}
+
 .stats-poke p span {
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin-right: 2px;
+    color: rgb(109, 109, 150);
 }
 .stats-poke div { 
     text-align: center;
@@ -43,10 +74,12 @@
 .stats-poke div span{
     margin: 0 10px;
 }
-.stats-poke a {
+.poke-card a {
     position: absolute;
     right: 10px;
-    bottom: 10px;
+    bottom: 0;
     text-decoration: none;
     cursor: pointer;
+    color: rgb(145, 145, 145);
+    font-size: .9rem;
 }

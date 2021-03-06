@@ -1,26 +1,25 @@
 import React,{ useState, useEffect} from 'react';
-import {useParams, Redirect} from 'react-router-dom'
+import {useParams, Redirect, Link} from 'react-router-dom'
 import './IndPokeCard.css'
 
 import axios from 'axios';
 import { useAuth } from '../provider/AuthProvider';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
 const IndPokeCard = () => {
     const { id } = useParams()
-    console.log(id)
     const {user} = useAuth()
-
+    const [dataPoke, setDataPoke] = useState([])
     const[generalChars, setGeneralChars] = useState({})
     const[abilities, setAbilities] = useState([])
     const[moves, setMoves] = useState([])
-
     const endpoint = `https://pokeapi.co/api/v2/pokemon/${id}`
     
     useEffect(() => {
         const dataEndpoint = () => {
             const response = axios.get(endpoint)
             response.then(response =>{
-                console.log(response)
+                setDataPoke(response.data)
                 setGeneralChars({
                     height: response.data.height,
                     weight: response.data.weight
@@ -33,9 +32,8 @@ const IndPokeCard = () => {
             })
         }    
         dataEndpoint()
-    },[id])
+    },[id, endpoint])
 
-    console.log(generalChars)
     const pokeAbility = abilities.map((item) =>{
         return <li key={item.ability.name}>{item.ability.name}</li>
     })
@@ -45,71 +43,52 @@ const IndPokeCard = () => {
     })
 
     return(
-        <>
+        <div className="poke-ind">
         {
             user ? <div className="row">
-            <div className="col-lg-8 col-xl-8">
-                <div className="general-container">
-                    {/*═══════════════════════════ First division ═══════════════════════════ */}
-                    <div className="row">
-                        <div className="block-container">{/*First Cont*/}
-                            <div className="col-lg-4 col-xl-4">
-                                <div className="card-info">
-                                    <h3>MOVES - {moves.length}</h3>
-                                    <div className="container-list">
-                                        {pokeMoves}
+                        <div className="col-lg-8 col-xl-8">
+                            <div className="circle-base">
+                                    <div className="circle-contrast">
+                                        <div className="circle-center">
+                                                <div className="container-image">
+                                                    <img src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`} alt="pokemon"/>
+                                                </div>
+                                        </div>
+                                    </div>
+                                <div className="bar"></div>
+                            </div>
+                            <div className="dats-poke">
+                                <Link to="/pokedex"><KeyboardBackspaceIcon fontSize="large"/></Link>
+                                <div className="encounters"><Link to={`/pokedex/pokemon/${id}/encounters`}>Encounters</Link></div>
+                                <h2>{dataPoke.name}</h2>
+                                <div className="general-poke">
+                                    <div>
+                                        <p>Height: <span>{generalChars.height}</span> </p>
+                                        <p>Weight: <span>{generalChars.weight}</span> </p>
+                                    </div>
+                                    <div className="habilities">
+                                        <h4>Habilities</h4>
+                                        <div>{pokeAbility}</div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-4 col-xl-4">
-                                <div className="card-info">
-                                    <h3 className="rigth-text">General Characteristics</h3>
-                                    <ul>
-                                        <li>Height:{generalChars.height}</li>
-                                        <li>Weight:{generalChars.weight}</li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                    {/*═══════════════════════════ Second division ═══════════════════════════ */}
-                    <div className="col-lg-6 col-xl-6">{/*ImagePoke Cont*/}
-                        <div className="circle-base">
-                           <div className="circle-contrast">
-                               <div className="circle-center">
-                                    <div className="container-image">
-                                        <img src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`} alt="pokemon"/>
-                                    </div>
-                               </div>
-                           </div>
-                           <div className="bar"></div>
-                        </div>
-                    </div>
-                    {/*═══════════════════════════ Third division ═════════════════════════════ */}
-                    <div className="row">
-                        <div className="block-container">{/*Second Cont*/}
-                            <div className="col-lg-4 col-xl-4">
-                                <div className="card-info">
-                                    <h3>Abilities</h3>
-                                    {pokeAbility}
-                                </div>
-                            </div>
-                            
-                            <div className="col-lg-4 col-xl-4">
-                                <div className="card-info">
-                                    <h3 className="rigth-text">OPTIONS</h3>
-                                    <button className="button-location">Encounters</button>
-                                </div>
+                        
+                    <div className="col-lg-3 col-xl-3 moves-side">
+                        <div className="moves-body">
+                            <h3>Moves</h3>
+                            <div className="list-moves">
+                                <ul>
+                                    {pokeMoves}
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
         :
         <Redirect to="/"/>
         }
-        </>
+        </div>
     )
 }
 

@@ -1,0 +1,28 @@
+.encounters-site {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative; 
+}
+.encounters-site h3 {
+    color: rgb(0, 0, 92);
+}
+
+.encounters-site li {
+    border-radius: 10px;
+    border: 1px solid rgb(175, 175, 175);
+    width: 300px;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    color: rgb(0, 0, 92);
+}
+
+.encounters-site a {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: rgb(175, 175, 175);
+}
